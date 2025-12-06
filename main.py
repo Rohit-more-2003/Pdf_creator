@@ -15,7 +15,10 @@ for ind, row in df.iterrows():
     pdf.set_font(family="Times", style="B", size=24) #mentioned above statements to apply to them
     pdf.set_text_color(100, 100, 100)
     pdf.cell(w=0, h=12, txt=row["Topic"], align="L", ln=1)
-    pdf.line(x1=10, y1=21, x2=200, y2=21)
+    #pdf.line(x1=10, y1=20, x2=200, y2=20)
+
+    for y in range(20, 298, 10):
+        pdf.line(10, y, 200, y)
 
     pdf.ln(265) #adds breakline, pagebreak
 
@@ -26,6 +29,9 @@ for ind, row in df.iterrows():
 
     for _ in range(row["Pages"] - 1):
         pdf.add_page()
+
+        for y in range(20, 298, 10):
+            pdf.line(10, y, 200, y)
 
         pdf.ln(276) #adds breakline, pagebreak
         #set the footer
